@@ -1,20 +1,30 @@
-import pytest
 import os
+import pickle
+import pytest
+import pandas as pd
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from preprocess import process_data
-import pandas as pd
-import pickle
 
 
 @pytest.fixture(scope='module')
 def setup_data():
     df = pd.read_csv('../data/census.csv')
-    categorical = [' workclass', ' education', ' marital-status', ' occupation', ' relationship', ' race', ' sex', ' native-country']
+    categorical = [
+        ' workclass',
+        ' education',
+        ' marital-status',
+        ' occupation',
+        ' relationship',
+        ' race',
+        ' sex',
+        ' native-country']
     target = ' salary'
-    X, y = process_data(X=df, categorical_features=categorical, label=target, training=True, encoder=None, lb=None)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X, y = process_data(X=df, categorical_features=categorical,
+                        label=target, training=True, encoder=None, lb=None)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
     classifier = RandomForestClassifier()
     classifier.fit(X_train, y_train)
     y_pred = classifier.predict(X_test)
@@ -27,7 +37,7 @@ def setup_data():
 
 
 def test_train_model(setup_data):
-    X_train, _, y_train, _,_,_,_,_,_ ,_= setup_data
+    X_train, _, y_train, _, _, _, _, _, _, _ = setup_data
     classifier = RandomForestClassifier()
     classifier.fit(X_train, y_train)
     assert isinstance(classifier, RandomForestClassifier)

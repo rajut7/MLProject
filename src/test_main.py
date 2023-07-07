@@ -4,6 +4,7 @@ from app import app
 
 client = TestClient(app)
 
+
 def test_get_prediction():
     response = client.get("/")
     assert response.status_code == 200
@@ -34,6 +35,7 @@ def test_ml_inference():
     prediction = response.json()["prediction"]
     assert prediction[0] == 0 or prediction[0] == 1
 
+
 def test_negative_inference():
     data = {
         "age": 40,
@@ -54,4 +56,3 @@ def test_negative_inference():
     response = client.post("/predict", json=data)
     assert response.status_code == 200
     assert response.json() == {"prediction": [0]}
-

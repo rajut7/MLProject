@@ -1,9 +1,10 @@
+import pickle
+import pandas as pd
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from preprocess import process_data
-import pandas as pd
-import pickle 
+
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
@@ -21,8 +22,8 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
-    classifier= RandomForestClassifier()
-    classifier.fit(X_train,y_train)
+    classifier = RandomForestClassifier()
+    classifier.fit(X_train, y_train)
     return classifier
 
 
@@ -65,7 +66,12 @@ def inference(model, X):
     pred = model.predict(X)
     return pred
 
-def compute_metrics_by_slice(data, model,categorical_features, target_feature):
+
+def compute_metrics_by_slice(
+        data,
+        model,
+        categorical_features,
+        target_feature):
     """
     Computes the performance metrics of a model on slices of the data based on categorical features.
 
@@ -87,19 +93,21 @@ def compute_metrics_by_slice(data, model,categorical_features, target_feature):
             slice_data = data[data[feature] == value]
             #X_slice = slice_data.drop(target_feature, axis=1)
             #y_slice = slice_data[target_feature]
-            if len(slice_data) <2:
+            if len(slice_data) < 2:
                 slice_metrics.append({
-                'Feature': feature,
-                'Value': None,
-                'Precision': None,
-                'Recall': None,
-                'F1': None
+                    'Feature': feature,
+                    'Value': None,
+                    'Precision': None,
+                    'Recall': None,
+                    'F1': None
                 })
                 continue
 
-            X_slice,y_slice,_,_= process_data(slice_data, categorical_features=categorical_features, label=target_feature, training= True, encoder=None, lb=None)
-            X_train, X_test, y_train, y_test = train_test_split(X_slice, y_slice, test_size=0.2, random_state=42)
-            model = train_model(X_train,y_train)
+            X_slice, y_slice, _, _ = process_data(
+                slice_data, categorical_features=categorical_features, label=target_feature, training=True, encoder=None, lb=None)
+            X_train, X_test, y_train, y_test = train_test_split(
+                X_slice, y_slice, test_size=0.2, random_state=42)
+            model = train_model(X_train, y_train)
             # Perform model inference on the slice
             y_pred = inference(model, X_test)
 
@@ -107,7 +115,7 @@ def compute_metrics_by_slice(data, model,categorical_features, target_feature):
             #precision = precision_score(y_test, y_pred)
             #recall = recall_score(y_test, y_pred)
             #f1 = fbeta_score(y_test, y_pred)
-            precision,recall, f1 = compute_model_metrics(y_test,y_pred)
+            precision, recall, f1 = compute_model_metrics(y_test, y_pred)
 
             # Store the metrics for the slice
             slice_metrics.append({
@@ -123,27 +131,41 @@ def compute_metrics_by_slice(data, model,categorical_features, target_feature):
 
     return slice_metrics_df
 
-if __name__== "__main__":
-    df= pd.read_csv('../data/census.csv')
-    categorical= ['workclass', 'education', 'marital_status', 'occupation', 'relationship','race','sex','native_country']
-    target = 'salary'
-    X,y,encoder,lb= process_data(X=df, categorical_features=categorical, label=target, training= True, encoder=None, lb=None)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    classifier = train_model(X_train,y_train)
-    y_pred = inference(classifier,X_test)
-    precision, recall, fbeta = compute_model_metrics(y_test,y_pred)
 
-    slice_metrics = compute_metrics_by_slice(df,classifier,categorical_features=categorical,target_feature= target)
+if __name__ == "__main__":
+    df = pd.read_csv('../data/census.csv')
+    categorical = [
+        'workclass',
+        'education',
+        'marital_status',
+        'occupation',
+        'relationship',
+        'race',
+        'sex',
+        'native_country']
+    target = 'salary'
+    X, y, encoder, lb = process_data(
+        X=df, categorical_features=categorical, label=target, training=True, encoder=None, lb=None)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
+    classifier = train_model(X_train, y_train)
+    y_pred = inference(classifier, X_test)
+    precision, recall, fbeta = compute_model_metrics(y_test, y_pred)
+
+    slice_metrics = compute_metrics_by_slice(
+        df,
+        classifier,
+        categorical_features=categorical,
+        target_feature=target)
 
     encoder_path = "./encoder.pkl"
-    with open(encoder_path,'wb') as file:
-        pickle.dump(encoder,file)
+    with open(encoder_path, 'wb') as file:
+        pickle.dump(encoder, file)
 
-    file_path= "./model.pkl"
+    file_path = "./model.pkl"
     with open(file_path, 'wb') as file:
         pickle.dump(classifier, file)
-    
+
     output_file = 'slice_output.txt'
     with open(output_file, 'w') as file:
         file.write(slice_metrics.to_string(index=False))
-
