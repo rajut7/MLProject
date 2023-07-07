@@ -29,7 +29,8 @@ def train_model(X_train, y_train):
 
 def compute_model_metrics(y, preds):
     """
-    Validates the trained machine learning model using precision, recall, and F1.
+    Validates the trained machine learning model using
+    precision, recall, and F1.
 
     Inputs
     ------
@@ -73,15 +74,18 @@ def compute_metrics_by_slice(
         categorical_features,
         target_feature):
     """
-    Computes the performance metrics of a model on slices of the data based on categorical features.
+    Computes the performance metrics of a model on slices of the data
+      based on categorical features.
 
     Inputs:
-    - data: pandas DataFrame containing the data with categorical features and the target feature.
+    - data: pandas DataFrame containing the data with categorical
+    features and the target feature.
     - categorical_features: list of categorical feature names.
     - target_feature: name of the target feature.
 
     Returns:
-    - slice_metrics: pandas DataFrame containing the performance metrics for each slice.
+    - slice_metrics: pandas DataFrame containing the performance
+    metrics for each slice.
     """
 
     slice_metrics = []
@@ -91,8 +95,6 @@ def compute_metrics_by_slice(
         for value in unique_values:
             # Create a slice of data for the current value of the feature
             slice_data = data[data[feature] == value]
-            #X_slice = slice_data.drop(target_feature, axis=1)
-            #y_slice = slice_data[target_feature]
             if len(slice_data) < 2:
                 slice_metrics.append({
                     'Feature': feature,
@@ -104,7 +106,8 @@ def compute_metrics_by_slice(
                 continue
 
             X_slice, y_slice, _, _ = process_data(
-                slice_data, categorical_features=categorical_features, label=target_feature, training=True, encoder=None, lb=None)
+                slice_data, categorical_features=categorical_features,
+                label=target_feature, training=True, encoder=None, lb=None)
             X_train, X_test, y_train, y_test = train_test_split(
                 X_slice, y_slice, test_size=0.2, random_state=42)
             model = train_model(X_train, y_train)
@@ -112,9 +115,6 @@ def compute_metrics_by_slice(
             y_pred = inference(model, X_test)
 
             # Compute performance metrics for the slice
-            #precision = precision_score(y_test, y_pred)
-            #recall = recall_score(y_test, y_pred)
-            #f1 = fbeta_score(y_test, y_pred)
             precision, recall, f1 = compute_model_metrics(y_test, y_pred)
 
             # Store the metrics for the slice
@@ -145,7 +145,8 @@ if __name__ == "__main__":
         'native_country']
     target = 'salary'
     X, y, encoder, lb = process_data(
-        X=df, categorical_features=categorical, label=target, training=True, encoder=None, lb=None)
+        X=df, categorical_features=categorical, label=target,
+        training=True, encoder=None, lb=None)
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42)
     classifier = train_model(X_train, y_train)

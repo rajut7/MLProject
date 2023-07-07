@@ -47,7 +47,6 @@ def predict(data: Data):
 
     # encoder = OneHotEncoder(sparse=False, handle_unknown="ignore")
     # lb = LabelBinarizer()
-    # X, _ = process_data(X=df, categorical_features=categorical, label=None, training=False, encoder=encoder, lb=lb)
     X_categorical = df[categorical]
     X_continuous = df.drop(columns=categorical)
 

@@ -12,16 +12,16 @@ from preprocess import process_data
 def setup_data():
     df = pd.read_csv('../data/census.csv')
     categorical = [
-        ' workclass',
-        ' education',
-        ' marital-status',
-        ' occupation',
-        ' relationship',
-        ' race',
-        ' sex',
-        ' native-country']
-    target = ' salary'
-    X, y = process_data(X=df, categorical_features=categorical,
+        'workclass',
+        'education',
+        'marital_status',
+        'occupation',
+        'relationship',
+        'race',
+        'sex',
+        'native_country']
+    target = 'salary'
+    X, y,_,_ = process_data(X=df, categorical_features=categorical,
                         label=target, training=True, encoder=None, lb=None)
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42)
@@ -33,7 +33,8 @@ def setup_data():
     fbeta = fbeta_score(y_test, y_pred, beta=1, zero_division=1)
     file_path = "./model.pkl"
 
-    return X_train, X_test, y_train, y_test, classifier, y_pred, precision, recall, fbeta, file_path
+    return X_train, X_test, y_train, y_test, classifier, \
+        y_pred, precision, recall, fbeta, file_path
 
 
 def test_train_model(setup_data):

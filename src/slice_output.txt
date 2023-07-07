@@ -1,80 +1,80 @@
        Feature                       Value  Precision   Recall       F1
-     workclass                   State-gov   0.766667 0.638889 0.696970
-     workclass            Self-emp-not-inc   0.688073 0.510204 0.585938
-     workclass                     Private   0.702103 0.607071 0.651138
-     workclass                 Federal-gov   0.785714 0.743243 0.763889
-     workclass                   Local-gov   0.715596 0.590909 0.647303
-     workclass                           ?   0.576923 0.416667 0.483871
-     workclass                Self-emp-inc   0.805970 0.771429 0.788321
+     workclass                   State-gov   0.775862 0.625000 0.692308
+     workclass            Self-emp-not-inc   0.678899 0.503401 0.578125
+     workclass                     Private   0.710313 0.619192 0.661630
+     workclass                 Federal-gov   0.757143 0.716216 0.736111
+     workclass                   Local-gov   0.723810 0.575758 0.641350
+     workclass                           ?   0.516129 0.444444 0.477612
+     workclass                Self-emp-inc   0.804688 0.735714 0.768657
      workclass                 Without-pay   1.000000 1.000000 1.000000
      workclass                Never-worked   1.000000 1.000000 1.000000
-     education                   Bachelors   0.738824 0.735363 0.737089
-     education                     HS-grad   0.617021 0.421512 0.500864
+     education                   Bachelors   0.725843 0.756440 0.740826
+     education                     HS-grad   0.613043 0.409884 0.491289
      education                        11th   0.750000 0.375000 0.500000
-     education                     Masters   0.786730 0.902174 0.840506
+     education                     Masters   0.795122 0.885870 0.838046
      education                         9th   1.000000 0.000000 0.000000
-     education                Some-college   0.632035 0.500000 0.558317
-     education                  Assoc-acdm   0.651163 0.583333 0.615385
-     education                   Assoc-voc   0.689655 0.547945 0.610687
+     education                Some-college   0.632479 0.506849 0.562738
+     education                  Assoc-acdm   0.600000 0.562500 0.580645
+     education                   Assoc-voc   0.677419 0.575342 0.622222
      education                     7th-8th   1.000000 0.000000 0.000000
-     education                   Doctorate   0.776119 0.912281 0.838710
-     education                 Prof-school   0.880000 0.967033 0.921466
+     education                   Doctorate   0.782609 0.947368 0.857143
+     education                 Prof-school   0.886598 0.945055 0.914894
      education                     5th-6th   1.000000 0.000000 0.000000
      education                        10th   0.000000 0.000000 1.000000
      education                     1st-4th   1.000000 0.000000 0.000000
      education                   Preschool   1.000000 1.000000 1.000000
-     education                        12th   1.000000 0.000000 0.000000
-marital_status               Never-married   0.911111 0.405941 0.561644
-marital_status          Married-civ-spouse   0.710383 0.685241 0.697585
-marital_status                    Divorced   0.733333 0.388235 0.507692
-marital_status       Married-spouse-absent   1.000000 0.111111 0.200000
-marital_status                   Separated   1.000000 0.222222 0.363636
+     education                        12th   0.000000 0.000000 1.000000
+marital_status               Never-married   0.869565 0.396040 0.544218
+marital_status          Married-civ-spouse   0.720657 0.693524 0.706830
+marital_status                    Divorced   0.717391 0.388235 0.503817
+marital_status       Married-spouse-absent   0.500000 0.111111 0.181818
+marital_status                   Separated   1.000000 0.277778 0.434783
 marital_status           Married-AF-spouse   1.000000 0.000000 0.000000
-marital_status                     Widowed   0.857143 0.400000 0.545455
-    occupation                Adm-clerical   0.644737 0.532609 0.583333
-    occupation             Exec-managerial   0.803571 0.770171 0.786517
-    occupation           Handlers-cleaners   0.600000 0.157895 0.250000
-    occupation              Prof-specialty   0.818428 0.807487 0.812921
+marital_status                     Widowed   0.750000 0.400000 0.521739
+    occupation                Adm-clerical   0.666667 0.521739 0.585366
+    occupation             Exec-managerial   0.795396 0.760391 0.777500
+    occupation           Handlers-cleaners   1.000000 0.210526 0.347826
+    occupation              Prof-specialty   0.806630 0.780749 0.793478
     occupation               Other-service   0.000000 0.000000 1.000000
-    occupation                       Sales   0.747253 0.676617 0.710183
-    occupation                Craft-repair   0.637097 0.413613 0.501587
-    occupation            Transport-moving   0.571429 0.231884 0.329897
-    occupation             Farming-fishing   0.888889 0.296296 0.444444
-    occupation           Machine-op-inspct   0.615385 0.280702 0.385542
-    occupation                Tech-support   0.631579 0.679245 0.654545
-    occupation                           ?   0.437500 0.411765 0.424242
-    occupation             Protective-serv   0.645161 0.425532 0.512821
+    occupation                       Sales   0.751381 0.676617 0.712042
+    occupation                Craft-repair   0.616000 0.403141 0.487342
+    occupation            Transport-moving   0.620690 0.260870 0.367347
+    occupation             Farming-fishing   0.833333 0.185185 0.303030
+    occupation           Machine-op-inspct   0.625000 0.350877 0.449438
+    occupation                Tech-support   0.625000 0.660377 0.642202
+    occupation                           ?   0.433333 0.382353 0.406250
+    occupation             Protective-serv   0.720000 0.382979 0.500000
     occupation                Armed-Forces   1.000000 0.000000 0.000000
     occupation             Priv-house-serv   1.000000 1.000000 1.000000
-  relationship               Not-in-family   0.736264 0.396450 0.515385
-  relationship                     Husband   0.722992 0.670377 0.695691
-  relationship                        Wife   0.671429 0.591195 0.628763
-  relationship                   Own-child   1.000000 0.058824 0.111111
-  relationship                   Unmarried   1.000000 0.229167 0.372881
+  relationship               Not-in-family   0.734043 0.408284 0.524715
+  relationship                     Husband   0.730627 0.678082 0.703375
+  relationship                        Wife   0.689655 0.628931 0.657895
+  relationship                   Own-child   0.666667 0.117647 0.200000
+  relationship                   Unmarried   0.750000 0.187500 0.300000
   relationship              Other-relative   1.000000 0.000000 0.000000
-          race                       White   0.730562 0.650892 0.688429
-          race                       Black   0.708333 0.414634 0.523077
-          race          Asian-Pac-Islander   0.622222 0.459016 0.528302
+          race                       White   0.725596 0.647462 0.684306
+          race                       Black   0.730769 0.463415 0.567164
+          race          Asian-Pac-Islander   0.630435 0.475410 0.542056
           race          Amer-Indian-Eskimo   0.500000 0.200000 0.285714
-          race                       Other   0.500000 0.333333 0.400000
-           sex                        Male   0.722222 0.635600 0.676148
-           sex                      Female   0.728643 0.575397 0.643016
-native_country               United-States   0.723090 0.614955 0.664653
+          race                       Other   0.000000 0.000000 1.000000
+           sex                        Male   0.714894 0.641711 0.676329
+           sex                      Female   0.702970 0.563492 0.625551
+native_country               United-States   0.721995 0.617051 0.665411
 native_country                        Cuba   0.600000 0.750000 0.666667
-native_country                     Jamaica   1.000000 0.000000 0.000000
+native_country                     Jamaica   1.000000 0.333333 0.500000
 native_country                       India   0.714286 0.555556 0.625000
-native_country                           ?   0.772727 0.566667 0.653846
-native_country                      Mexico   1.000000 0.100000 0.181818
+native_country                           ?   0.894737 0.566667 0.693878
+native_country                      Mexico   0.500000 0.100000 0.166667
 native_country                       South   1.000000 0.000000 0.000000
 native_country                 Puerto-Rico   1.000000 0.000000 0.000000
 native_country                    Honduras   1.000000 0.000000 0.000000
-native_country                     England   0.666667 0.666667 0.666667
+native_country                     England   0.800000 0.666667 0.727273
 native_country                      Canada   0.666667 0.333333 0.444444
-native_country                     Germany   0.777778 0.777778 0.777778
+native_country                     Germany   0.888889 0.888889 0.888889
 native_country                        Iran   0.500000 0.250000 0.333333
-native_country                 Philippines   0.800000 0.727273 0.761905
+native_country                 Philippines   0.818182 0.818182 0.818182
 native_country                       Italy   1.000000 0.500000 0.666667
-native_country                      Poland   0.500000 1.000000 0.666667
+native_country                      Poland   0.000000 0.000000 1.000000
 native_country                    Columbia   1.000000 1.000000 1.000000
 native_country                    Cambodia   1.000000 0.500000 0.666667
 native_country                    Thailand   1.000000 0.000000 0.000000
@@ -84,20 +84,20 @@ native_country                      Taiwan   0.600000 1.000000 0.750000
 native_country                       Haiti   1.000000 1.000000 1.000000
 native_country                    Portugal   1.000000 0.000000 0.000000
 native_country          Dominican-Republic   1.000000 0.000000 0.000000
-native_country                 El-Salvador   1.000000 0.333333 0.500000
-native_country                      France   1.000000 0.000000 0.000000
+native_country                 El-Salvador   1.000000 0.000000 0.000000
+native_country                      France   1.000000 0.333333 0.500000
 native_country                   Guatemala   1.000000 1.000000 1.000000
-native_country                       China   0.750000 1.000000 0.857143
-native_country                       Japan   0.500000 1.000000 0.666667
+native_country                       China   0.500000 1.000000 0.666667
+native_country                       Japan   0.250000 0.500000 0.333333
 native_country                  Yugoslavia   0.000000 1.000000 0.000000
 native_country                        Peru   1.000000 0.000000 0.000000
 native_country  Outlying-US(Guam-USVI-etc)   1.000000 1.000000 1.000000
 native_country                    Scotland   1.000000 0.000000 0.000000
 native_country             Trinadad&Tobago   1.000000 1.000000 1.000000
-native_country                      Greece   0.000000 0.000000 1.000000
+native_country                      Greece   1.000000 0.000000 0.000000
 native_country                   Nicaragua   1.000000 1.000000 1.000000
 native_country                     Vietnam   1.000000 0.000000 0.000000
 native_country                        Hong   1.000000 0.500000 0.666667
-native_country                     Ireland   1.000000 0.500000 0.666667
+native_country                     Ireland   1.000000 0.000000 0.000000
 native_country                     Hungary   1.000000 0.000000 0.000000
 native_country                        None        NaN      NaN      NaN
