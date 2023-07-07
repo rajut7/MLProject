@@ -50,7 +50,7 @@ def predict(data: Data):
     X_categorical = df[categorical]
     X_continuous = df.drop(columns=categorical)
 
-    file_path = "./encoder.pkl"
+    file_path = "./src/encoder.pkl"
     with open(file_path, 'rb') as file:
         encoder = pickle.load(file)
 
@@ -59,7 +59,8 @@ def predict(data: Data):
     X = np.concatenate([X_continuous, X_categorical], axis=1)
 
     # Load the trained model
-    with open("model.pkl", "rb") as pickle_in:
+    model_path = "./src/model.pkl"
+    with open(model_path, "rb") as pickle_in:
         model = pickle.load(pickle_in)
 
     # Perform prediction
