@@ -17,6 +17,9 @@ jobs:
 
       - name: Print current directory
         run: echo $PWD
+
+      - name: Print file list
+        run: ls -R
         
       - name: Checkout code
         uses: actions/checkout@v2
