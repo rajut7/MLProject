@@ -50,7 +50,8 @@ def predict(data: Data):
     X_categorical = df[categorical]
     X_continuous = df.drop(columns=categorical)
 
-    with open("encoder.pkl", 'rb') as file:
+    file_path = "./encoder.pkl"
+    with open(file_path, 'rb') as file:
         encoder = pickle.load(file)
 
     X_categorical = encoder.transform(X_categorical)
