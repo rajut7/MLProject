@@ -1,4 +1,5 @@
 import pickle
+import joblib
 import numpy as np
 import pandas as pd
 from fastapi import FastAPI
@@ -61,7 +62,7 @@ def predict(data: Data):
     # Load the trained model
     model_path = "./src/model.pkl"
     with open(model_path, "rb") as pickle_in:
-        model = pickle.load(pickle_in)
+        model = joblib.load(pickle_in)
 
     # Perform prediction
     prediction = model.predict(X)
