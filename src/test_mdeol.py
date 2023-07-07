@@ -10,7 +10,7 @@ from preprocess import process_data
 
 @pytest.fixture(scope='module')
 def setup_data():
-    df = pd.read_csv('../../data/census.csv')
+    df = pd.read_csv('./data/census.csv')
     categorical = [
         'workclass',
         'education',
