@@ -15,6 +15,9 @@ jobs:
         with:
           python-version: 3.9
 
+      - name: Print current directory
+        run: echo $PWD
+        
       - name: Checkout code
         uses: actions/checkout@v2
 
