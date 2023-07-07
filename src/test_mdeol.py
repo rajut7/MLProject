@@ -21,8 +21,9 @@ def setup_data():
         'sex',
         'native_country']
     target = 'salary'
-    X, y,_,_ = process_data(X=df, categorical_features=categorical,
-                        label=target, training=True, encoder=None, lb=None)
+    X, y, _, _ = process_data(X=df, categorical_features=categorical,
+                              label=target,
+                              training=True, encoder=None, lb=None)
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42)
     classifier = RandomForestClassifier()
