@@ -15,7 +15,7 @@ data = {'age': 50,
         'sex': "Female",
         'capital_gain': 0,
         'capital_loss': 0,
-        'hours_per_weekk': 50,
+        'hours_per_week': 50,
         'native_country': "United-States"
         }
 

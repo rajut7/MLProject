@@ -21,7 +21,7 @@ class Data(BaseModel):
     sex: str
     capital_gain: float
     capital_loss: float
-    hours_per_weekk: int
+    hours_per_week: int
     native_country: str
 
 

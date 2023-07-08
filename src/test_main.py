@@ -50,7 +50,7 @@ def test_negative_inference():
         "sex": "Female",
         "capital_gain": 0.0,
         "capital_loss": 0.0,
-        "hours_per_weekk": 35,
+        "hours_per_week": 35,
         "native_country": "United-States"
     }
     response = client.post("/predict", json=data)
