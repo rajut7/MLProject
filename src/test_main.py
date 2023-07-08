@@ -15,7 +15,7 @@ def test_ml_inference():
     data = {
         "age": 30,
         "workclass": "Private",
-        "fnigt": 77516,
+        "fnlgt": 77516,
         "education": "Bachelors",
         "education_num": 9,
         "marital_status": "Divorced",
@@ -25,7 +25,7 @@ def test_ml_inference():
         "sex": "Male",
         "capital_gain": 2174.0,
         "capital_loss": 0.0,
-        "hours_per_work": 40,
+        "hours_per_week": 40,
         "native_country": "Cuba"
     }
 
@@ -40,7 +40,7 @@ def test_negative_inference():
     data = {
         "age": 40,
         "workclass": "Private",
-        "fnigt": 123456,
+        "fnlgt": 123456,
         "education": "Masters",
         "education_num": 14,
         "marital_status": "Never-married",
@@ -50,7 +50,7 @@ def test_negative_inference():
         "sex": "Female",
         "capital_gain": 0.0,
         "capital_loss": 0.0,
-        "hours_per_work": 35,
+        "hours_per_weekk": 35,
         "native_country": "United-States"
     }
     response = client.post("/predict", json=data)
