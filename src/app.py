@@ -11,7 +11,7 @@ app = FastAPI()
 class Data(BaseModel):
     age: int
     workclass: str
-    fnigt: int
+    fnlgt: int
     education: str
     education_num: int
     marital_status: str
@@ -21,7 +21,7 @@ class Data(BaseModel):
     sex: str
     capital_gain: float
     capital_loss: float
-    hours_per_work: int
+    hours_per_weekk: int
     native_country: str
 
 
