@@ -60,3 +60,7 @@ To get started with this project, follow the steps below:
 This project aims to provide a machine learning model for predicting an individual's annual income level, along with a robust API for accessing the model's predictions. By following the instructions and guidelines provided in this documentation, you can successfully run, test, and deploy the project components.
 
 For any further assistance or clarification, please refer to the project's GitHub repository or reach out to the project maintainers. Happy coding!
+
+## Github Repository Linrk
+
+https://github.com/rajut7/mlproject
