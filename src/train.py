@@ -3,10 +3,10 @@ import pandas as pd
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GridSearchCV
 from preprocess import process_data
 
 
-# Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
     """
     Trains a machine learning model and returns it.
@@ -19,18 +19,33 @@ def train_model(X_train, y_train):
         Labels.
     Returns
     -------
-    model
+    model : RandomForestClassifier
         Trained machine learning model.
     """
-    classifier = RandomForestClassifier()
-    classifier.fit(X_train, y_train)
-    return classifier
+
+    # Define hyperparameters for the RandomForestClassifier
+    param_grid = {
+        'n_estimators': [100, 200, 300],
+        'max_depth': [10, 20, 30],
+        'min_samples_split': [2, 5, 10],
+        'class_weight': ['balanced']
+    }
+
+    # Perform grid search for hyperparameter tuning
+    model = RandomForestClassifier(random_state=42)
+    grid_search = GridSearchCV(model, param_grid, cv=3, scoring='f1')
+    grid_search.fit(X_train, y_train)
+
+    # Get the best model from the grid search
+    best_model = grid_search.best_estimator_
+
+    return best_model
 
 
 def compute_model_metrics(y, preds):
     """
-    Validates the trained machine learning model using
-    precision, recall, and F1.
+    Validates the trained machine learning model using precision,
+      recall, and F1.
 
     Inputs
     ------
@@ -55,7 +70,7 @@ def inference(model, X):
 
     Inputs
     ------
-    model : ???
+    model : RandomForestClassifier
         Trained machine learning model.
     X : np.array
         Data used for prediction.
@@ -74,8 +89,8 @@ def compute_metrics_by_slice(
         categorical_features,
         target_feature):
     """
-    Computes the performance metrics of a model on slices of the data
-      based on categorical features.
+    Computes the performance metrics of a model on slices of the
+    data based on categorical features.
 
     Inputs:
     - data: pandas DataFrame containing the data with categorical
@@ -84,10 +99,9 @@ def compute_metrics_by_slice(
     - target_feature: name of the target feature.
 
     Returns:
-    - slice_metrics: pandas DataFrame containing the performance
-    metrics for each slice.
+    - slice_metrics: pandas DataFrame containing the performance metrics
+    for each slice.
     """
-
     slice_metrics = []
 
     for feature in categorical_features:
@@ -111,7 +125,7 @@ def compute_metrics_by_slice(
             X_train, X_test, y_train, y_test = train_test_split(
                 X_slice, y_slice, test_size=0.2, random_state=42)
             model = train_model(X_train, y_train)
-            # Perform mdel inference
+            # Perform model inference
             y_pred = inference(model, X_test)
 
             # Compute performance metrics for the slice
@@ -150,8 +164,14 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42)
     classifier = train_model(X_train, y_train)
-    y_pred = inference(classifier, X_test)
+
+    # Make predictions on test set
+    y_pred = classifier.predict(X_test)
     precision, recall, fbeta = compute_model_metrics(y_test, y_pred)
+    print("Test Set Metrics:")
+    print("Precision:", precision)
+    print("Recall:", recall)
+    print("F1 Score:", fbeta)
 
     slice_metrics = compute_metrics_by_slice(
         df,

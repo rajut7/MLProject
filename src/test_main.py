@@ -36,23 +36,47 @@ def test_ml_inference():
     assert prediction[0] == 0 or prediction[0] == 1
 
 
+def test_positive_inference():
+    data = {
+        'age': 42,
+        'workclass': 'Private',
+        'fnlgt': 185900,
+        'education': 'Bachelors',
+        'education_num': 13,
+        'marital_status': 'Married-civ-spouse',
+        'occupation': 'Exec-managerial',
+        'relationship': 'Husband',
+        'race': 'White',
+        'sex': 'Male',
+        'capital_gain': 50000,
+        'capital_loss': 0,
+        'hours_per_week': 45,
+        'native_country': 'United-States'
+    }
+
+    response = client.post("/predict", json=data)
+    assert response.status_code == 200
+    assert response.json() == {"prediction": [1]}
+
+
 def test_negative_inference():
     data = {
-        "age": 40,
+        "age": 30,
         "workclass": "Private",
-        "fnlgt": 123456,
-        "education": "Masters",
-        "education_num": 14,
-        "marital_status": "Never-married",
-        "occupation": "Other-service",
-        "relationship": "Not-in-family",
-        "race": "Black",
-        "sex": "Female",
-        "capital_gain": 0.0,
+        "fnlgt": 77516,
+        "education": "Bachelors",
+        "education_num": 9,
+        "marital_status": "Divorced",
+        "occupation": "Exec-managerial",
+        "relationship": "Wife",
+        "race": "White",
+        "sex": "Male",
+        "capital_gain": 2174.0,
         "capital_loss": 0.0,
-        "hours_per_week": 35,
-        "native_country": "United-States"
+        "hours_per_week": 40,
+        "native_country": "Cuba"
     }
+
     response = client.post("/predict", json=data)
     assert response.status_code == 200
     assert response.json() == {"prediction": [0]}
